@@ -137,27 +137,13 @@ def grand_winner?(scores)
   scores.value?(5)
 end
 
-def player_greeting_message
-  if WHO_GOES_FIRST == "player"
-    loop do
-      prompt "Welcome to Tic Tac Toe. Win 5 rounds to be the grand winner!"
-      prompt "Player goes first."
-      prompt "Enter any key to continue."
-      continue = gets.chomp
-      break unless continue == nil?
-    end
-  end
-end
-
-def computer_greeting_message
-  if WHO_GOES_FIRST == "computer"
-    loop do
-      prompt "Welcome to Tic Tac Toe. Win 5 rounds to be the grand winner!"
-      prompt "Computer goes first."
-      prompt "Enter any key to continue."
-      continue = gets.chomp
-      break unless continue == nil?
-    end
+def greeting_message(player)
+  loop do
+    prompt "Welcome to Tic Tac Toe. Win 5 rounds to be the grand winner!"
+    prompt "#{player.capitalize} goes first."
+    prompt "Enter any key to continue."
+    continue = gets.chomp
+    break unless continue == nil?
   end
 end
 
@@ -175,10 +161,10 @@ if WHO_GOES_FIRST == "choose"
   end
 elsif WHO_GOES_FIRST == "player"
   choice = "player"
-  player_greeting_message
+  greeting_message(choice)
 elsif WHO_GOES_FIRST == "computer"
   choice = "computer"
-  computer_greeting_message
+  greeting_message(choice)
 end
 
 loop do
